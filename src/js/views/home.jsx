@@ -1,43 +1,70 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import { Card } from "../component/card.jsx";
+import { Card2 } from "../component/card2.jsx";
+import { Card3 } from "../component/card3.jsx";
 
-export const Home = () => (
-	<div className= "container">
+export const Home = () => {
 
-		<h1 className = "text-danger" >Characters</h1>
-		{/* <div className="row row-cols-1 row-cols-md-3 g-4"/>
-  <div className="col">
-    <div className="card h-100">
-      <img src="" className="card-img-top" alt="..."/>
-      <div className="card-body">
-        <h5 className="card-title">Card title</h5>
-        <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-
-		<div className= "d-flex justify-content-between"> */}
+	const [characters, setCharacters] = useState([])
+	const [planets, setPlanets] = useState([])
+  const [vehicles, setVehicles] =useState ([])
 
 
-<div className="card" style="width: 18rem;">
-  <img src="..." className="card-img-top" alt="..."></img>
- <div className="card-body"/>
-    <h5 className="card-title">Card title</h5>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <button type="button" className="btn btn-outline-primary">Learn More</button>
+  function obtenerVehicles(){
+    
+		fetch("https://www.swapi.tech/api/vehicles/")
+.then(res => res.json())
+.then(data => setVehicles(data.results))
+.catch(err => console.error(err))
+  }
 
-    <a href="#" className="btn btn-primary">Go somewhere</a>
+
+	function obtenerPlanets(){
+    
+		fetch("https://www.swapi.tech/api/planets/")
+.then(res => res.json())
+.then(data => setPlanets(data.results))
+.catch(err => console.error(err))
+	}
+
+	function obtenerCharacters(){
+		fetch("https://www.swapi.tech/api/people/")
+		.then(res => res.json())
+		.then(data => setCharacters(data.results))
+		.catch(err => console.error(err))
+	}
+
+	useEffect(()=>{
+		obtenerCharacters()
+		obtenerPlanets()
+    obtenerVehicles()
+	},[])
+	
+	return(
+    <div>
+	<div className="container">
+<h1 className="text-danger">Characters</h1>
+  
+	<div className="row row-cols-4">
+		
+	{characters.map((item)=><Card nombre={item.name} height={item.name}/>)}
+  </div>
+	</div>
+
+<div className="container">
+<h1 className="text-danger">Planets</h1>
+  <div className="row row-cols-4">
+	{planets.map((item)=><Card2 planeta={item.name} key={item}/>)}
+  </div>
   </div>
 
-
-  
-		{/* <button type="button" className="btn btn-outline-primary">Learn More</button> */}
-
-
-		
-   
-
-
-
-		
-
-;
-</div>)
+<div className="container">
+<h1 className="text-danger">Vehicles</h1>
+<div className="row row-cols-4">
+  {vehicles.map((item)=><Card3 vehicle={item.name} key={item}/>)}
+  </div>
+	</div>
+</div>
+);}
