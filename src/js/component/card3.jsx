@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Link} from "react-router-dom"
+import { Context } from "../store/appContext";
 
 
 export const Card3 = (props) => {
+    const {actions}= useContext (Context)
     let id = parseInt(props.id)+1;
 
     console.log (props);
@@ -18,8 +20,8 @@ return (
                     <p className="card-text">Consumables: {props.consumo}</p>
                     <p className="card-text">Create: {props.creado}</p>
                     <div className="d-flex justify-content-between">
-                    <Link type="button" className="btn btn-outline-primary" to={"/single/" +id}>Learn More</Link>
-                        <Link type="button" className="btn btn-outline-warning "><i className="fa fa-heart outline-white"></i></Link>
+                    <Link type="button" className="btn btn-outline-primary" to={"/singlevehicles/" +id}>Learn More</Link>
+                    <button type="button" className="btn btn-outline-warning"  onClick= {() => actions.favourites(props)}><i className="fa fa-heart outline-white"></i></button>
                     </div>
                 </div>
             </div>

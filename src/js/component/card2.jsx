@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Link} from "react-router-dom"
+import { Context } from "../store/appContext";
 
 
 export const Card2 = (props) => {
+  const {actions}= useContext (Context)
+
   let id = parseInt(props.id)+1;
 
 	return (
@@ -20,8 +23,8 @@ export const Card2 = (props) => {
 
 
 		<div className="d-flex justify-content-between">
-		<Link type="button" className="btn btn-outline-primary" to={"/single/"+id}>Learn More</Link>
-		<Link type="button" className="btn btn-outline-warning "><i className="fa fa-heart outline-white"></i></Link>
+		<Link type="button" className="btn btn-outline-primary" to={"/singlePlanets/"+id}>Learn More</Link>
+		<button type="button" className="btn btn-outline-warning"  onClick= {() => actions.favourites()}><i className="fa fa-heart outline-white"></i></button>
 		</div>
       </div>
     </div>
