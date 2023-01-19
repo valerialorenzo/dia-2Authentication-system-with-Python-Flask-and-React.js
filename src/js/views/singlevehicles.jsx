@@ -20,7 +20,7 @@ export const Singlevehicles = props => {
 
 
 	useEffect(()=>{
-		obtenerInformationDeVehicle();
+		obtenerInformationDeVehicle(params.theid);
 	},[])
 	let id=params.theid;
 	return (
@@ -38,10 +38,10 @@ export const Singlevehicles = props => {
 
 <hr className="my-4 text-danger text-center" style={{height: "5px"}}/>	
 					<div className="row row-cols-6 text-danger text-center">
-						<div className="col"><h5>Name</h5> <p className="fw-normal">{vehicle.name}</p></div>
-						<div className="col"><h5>Capacity</h5> <p className="fw-normal">{vehicle.cargo_capacity}</p></div>
-						<div className="col"><h5>Consumables</h5> <p className="fw-normal">{vehicle.consumables}</p></div>
-                        <div className="col"><h5>Create</h5> <p className="fw-normal">{vehicle.created}</p></div>
+						<div className="col"><h5>Name</h5> <p className="fw-normal">{store.detallesVehicle.name}</p></div>
+						<div className="col"><h5>Capacity</h5> <p className="fw-normal">{store.detallesVehicle.cargo_capacity}</p></div>
+						<div className="col"><h5>Consumables</h5> <p className="fw-normal">{store.detallesVehicle.consumables}</p></div>
+                        <div className="col"><h5>Create</h5> <p className="fw-normal">{store.detllaesVehicle.created}</p></div>
 					</div>
 
 

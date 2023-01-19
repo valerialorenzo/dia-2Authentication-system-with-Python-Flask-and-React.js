@@ -4,7 +4,8 @@ import { Context } from "../store/appContext";
 
 
 export const Card2 = (props) => {
-  const {actions}= useContext (Context)
+  let item=props.item
+  const{actions}=useContext(Context)
 
   let id = parseInt(props.id)+1;
 
@@ -24,7 +25,7 @@ export const Card2 = (props) => {
 
 		<div className="d-flex justify-content-between">
 		<Link type="button" className="btn btn-outline-primary" to={"/singlePlanets/"+id}>Learn More</Link>
-		<button type="button" className="btn btn-outline-warning"  onClick= {() => actions.favourites()}><i className="fa fa-heart outline-white"></i></button>
+		<button type="button" className="btn btn-outline-warning"  onClick= {() => actions.agregarFavorito(item)}><i className={actions.changeColor(item)}></i></button>
 		</div>
       </div>
     </div>

@@ -37,12 +37,12 @@ export const Single = props => {
 </div>
 <hr className="my-4 text-danger text-center" style={{height: "5px"}}/>	
 					<div className="row row-cols-6 text-danger text-center">
-						<div className="col"><h5>Name</h5> <p className="fw-normal">{characters.name}</p></div>
-						<div className="col"><h5>Birth Year</h5> <p className="fw-normal">{characters.birth_year}</p></div>
-						<div className="col"><h5>Gender</h5> <p className="fw-normal">{characters.gender}</p></div>
-						<div className="col"><h5>Height</h5><p className="fw-normal">{characters.height}</p></div>
-						<div className="col"><h5>Skin Color</h5> <p className="fw-normal">{characters.skin_color}</p></div>
-						<div className="col"><h5>Eye color</h5> <p className="fw-normal">{characters.eye_color}</p></div>
+						<div className="col"><h5>Name</h5> <p className="fw-normal">{store.detallesCharacters.name}</p></div>
+						<div className="col"><h5>Birth Year</h5> <p className="fw-normal">{store.detallesCharacters.birth_year}</p></div>
+						<div className="col"><h5>Gender</h5> <p className="fw-normal">{store.detallesCharacters.gender}</p></div>
+						<div className="col"><h5>Height</h5><p className="fw-normal">{store.detallesCharacters.height}</p></div>
+						<div className="col"><h5>Skin Color</h5> <p className="fw-normal">{store.detallesCharacters.skin_color}</p></div>
+						<div className="col"><h5>Eye color</h5> <p className="fw-normal">{store.detallesCharacters.eye_color}</p></div>
 					</div>
 			</div>
 		{/* <div className="jumbotron w 75 mx-auto bg-secondary d-flex">
