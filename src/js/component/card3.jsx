@@ -27,7 +27,9 @@ export const Card3 = (props) => {
           <h5 className="card-title">{props.vehicle}</h5>
           <p className="card-text">Capacity: {props.capacidad}</p>
           <p className="card-text">Consumables: {props.consumo}</p>
-          <p className="card-text">Create: {props.creado}</p>
+          <p className="card-text">Create: {new Date (props.creado).toLocaleDateString('es-Es')}
+          
+          </p>
           <div className="d-flex justify-content-between">
             <Link
               type="button"

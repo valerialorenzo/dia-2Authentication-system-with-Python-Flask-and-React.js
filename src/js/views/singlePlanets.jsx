@@ -13,7 +13,10 @@ export const SinglePlanets = props => {
 	function obtenerInformationDePlanet(){
 		fetch("https://swapi.dev/api/planets/"+params.theid)
         .then(res => res.json())
-        .then(data => setPlanet(data))
+        .then(data => {
+			console.log(data)
+			setPlanet(data)
+		})
         .catch(err => console.error(err))
 	}
 	
@@ -38,9 +41,9 @@ export const SinglePlanets = props => {
 
 					<hr className="my-4 text-danger text-center" style={{height: "5px"}}/>	
 					<div className="row row-cols-6 text-danger text-center">
-						<div className="col"><h5>Name</h5> <p className="fw-normal">{store.detallesPlanet.name}</p></div>
-						<div className="col"><h5>Terrain</h5> <p className="fw-normal">{store.detallesPlanet.terrain}</p></div>
-						<div className="col"><h5>Population</h5> <p className="fw-normal">{store.detallesPlanet.population}</p></div>
+						<div className="col"><h5>Name</h5> <p className="fw-normal">{planet.name}</p></div>
+						<div className="col"><h5>Terrain</h5> <p className="fw-normal">{planet.terrain}</p></div>
+						<div className="col"><h5>Population</h5> <p className="fw-normal">{planet.population}</p></div>
 					</div>
 
 			</div>

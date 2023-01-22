@@ -8,13 +8,17 @@ export const Singlevehicles = props => {
 	const params = useParams();
 	const [characters, setCharacters]=useState([])
 	const [planet, setPlanet]=useState([])
-	const [vehicle, setVehicle]=useState([])
+	const [vehicle, setVehicle]=useState({})
 
 
 	function obtenerInformationDeVehicle(){
-		fetch("https://swapi.dev/api/vehicles/"+params.theid)
+		fetch("https://swapi.tech/api/vehicles/"+params.theid)
 		.then(res => res.json())
-		.then(data => setVehicle(data))
+		.then(data => {
+			console.log(data);
+			setVehicle(data)
+			setVehicle(data.result.properties)
+		})
 		.catch(err => console.error(err))
 	}
 
@@ -38,10 +42,10 @@ export const Singlevehicles = props => {
 
 <hr className="my-4 text-danger text-center" style={{height: "5px"}}/>	
 					<div className="row row-cols-6 text-danger text-center">
-						<div className="col"><h5>Name</h5> <p className="fw-normal">{store.detallesVehicle.name}</p></div>
-						<div className="col"><h5>Capacity</h5> <p className="fw-normal">{store.detallesVehicle.cargo_capacity}</p></div>
-						<div className="col"><h5>Consumables</h5> <p className="fw-normal">{store.detallesVehicle.consumables}</p></div>
-                        <div className="col"><h5>Create</h5> <p className="fw-normal">{store.detllaesVehicle.created}</p></div>
+						<div className="col"><h5>Name</h5> <p className="fw-normal">{vehicle.name}</p></div>
+						<div className="col"><h5>Capacity</h5> <p className="fw-normal">{vehicle.cargo_capacity}</p></div>
+						<div className="col"><h5>Consumables</h5> <p className="fw-normal">{vehicle.consumables}</p></div>
+                        <div className="col"><h5>Create</h5> <p className="fw-normal">{new Date(vehicle.created).toLocaleDateString('es-Es')}</p></div>
 					</div>
 
 
