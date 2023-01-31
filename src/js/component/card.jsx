@@ -27,7 +27,7 @@ export const Card = (props) => {
           <p className="card-text">Gender: {props.genero}</p>
           <p className="card-text">Hair color: {props.pelo}</p>
           <p className="card-text">Eye color: {props.ojos}</p>
-
+{/* . */}
           <div className="d-flex justify-content-between">
             <Link
               type="button"
